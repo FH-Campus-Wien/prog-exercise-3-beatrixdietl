@@ -1,7 +1,7 @@
 package at.ac.fhcampuswien;
 
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class App {
@@ -33,36 +33,29 @@ public class App {
             for (int i = 1; i < startingDay * 3 - 2; i++) {
                 System.out.print(" ");
             }
+            for (int countDay = 1; countDay <= numberDays; countDay++) {
 
-            //do {
+                if (startingDay + countDay == 9){
+                    System.out.println();
+                }
 
-                    for (int countDay = 1; countDay <= numberDays; countDay++) {
+                if (countDay < 10) {
+                    System.out.print(" ");
+                }
 
-                        if (startingDay + countDay == 9){
-                            System.out.println();
-                            }
+                System.out.print(countDay + " ");
+                //countDay++;
 
-                        if (countDay < 10) {
-                            System.out.print(" ");
+                if (weekDay % 7 == 0 && countDay > 7) {
+                    System.out.println();
+                }
 
-                        }
+                weekDay++;
 
-                        System.out.print(countDay + " ");
-                        //countDay++;
-
-                        if (weekDay % 7 == 0 && countDay > 7) {
-                            System.out.println();
-                        }
-                        weekDay++;
-
-                        if (countDay == numberDays && countDay < 30){
-                            System.out.println();
-                        }
-                        }
-
-
-
-            //} while (numberDays <= countDay);
+                if (countDay == numberDays && countDay < 30){
+                    System.out.println();
+                }
+            }
 
             //% 7 für Zeilenumbruch
             //2x count für Tag-Zahl und Wochentag
@@ -70,17 +63,35 @@ public class App {
 
         }
 
-        public static void lgc(){
+        public static void lcg(long[]array){
+            array = new long[10];
+            Random randomNumber = new Random(); //https://www.educative.io/answers/how-to-generate-random-numbers-in-java
+            double x = randomNumber.nextLong();
+            double a = 1103515245;
+            double c = 12345;
+            double m = Math.pow(2, 31);
+
+
+            for (int h = 0; h < 10; h++) {
+                x = (a * x + c) % m;
+                array[h] = (long) x;
+            }
+
+
 
         }
 
+        public static int randomNumberBetweenOneAndHundred(){
+            return (int) (Math.random() * 99 + 1);
+        }
 
-        public static void guessingGame() {
-            // Obergrenze einrichten!!
-            Random randomNumber = new Random(); //https://www.educative.io/answers/how-to-generate-random-numbers-in-java
+        public static void guessingGame(int numberToGuess) {
+            //Random randomNumber = new Random(); //https://www.educative.io/answers/how-to-generate-random-numbers-in-java
             Scanner scan = new Scanner(System.in);
+           // guessingGame(randomNumberBetweenOneAndHundred());
             int countNumber = 1;
-            int numberToGuess = randomNumber.nextInt(101);
+            //int numberToGuess = randomNumber.nextInt(101);
+            //numberToGuess = randomNumberBetweenOneAndHundred();
             int guessNumber;
 
             do {
@@ -96,21 +107,20 @@ public class App {
                         //kleiner als random
                         System.out.println("The number AI picked is higher than your guess.");
 
-
-                    } else if (guessNumber == numberToGuess) {
-                        //gleich
-                        System.out.print("You won wisenheimer!");
                     }
                 }
 
             } while (countNumber < 11 && guessNumber != numberToGuess);
 
             if (guessNumber != numberToGuess) {
-
                 System.out.println("You lost! Have you ever heard of divide & conquer?");
+            } else {
+                System.out.print("You won wisenheimer!");
+                System.out.println();
 
             }
         }
+
 
     public static boolean swapArrays (int[] numbers1, int[] numbers2){
         if(numbers1.length != numbers2.length) {
@@ -123,15 +133,12 @@ public class App {
             public static void main (String[]args){
                 //App exercise3 = new App();
 
-                //System.out.println("One Month Calendar:");
-                //oneMonthCalendar();
+                //System.out.println("Pseudo Random Numbers:");
+                //lgc();
 
-                System.out.println("Pseudo Random Numbers:");
-                lgc();
-
-                System.out.println("Guessing Game:");
-                guessingGame();
-
+                //System.out.println("Guessing Game:");
+                //randomNumberBetweenOneAndHundred();
+                //guessingGame()int, class);
             }
         }
 
