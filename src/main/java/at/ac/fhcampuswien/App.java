@@ -139,7 +139,31 @@ public class App {
 
         return true;
         }
-        // boolean returnValue = swapArrays(new int []{4,3,2}, new int[]{4});
+
+        public static int checkDigit (int[] code){
+            int gewichtung;
+            int product;
+            int sum = 0;
+            int rest;
+            int checkDigit;
+
+            for (int i = 0; i < code.length; i++){
+                gewichtung = i + 2;
+                product = gewichtung * code[i];
+                sum = sum + product;
+            }
+
+            rest = sum % 11;
+            checkDigit = 11 - rest;
+
+            if (checkDigit == 10){
+                checkDigit = 0;
+            } else if (checkDigit == 11){
+                checkDigit = 5;
+            }
+
+            return checkDigit;
+        }
 
             public static void main (String[]args){
                 //App exercise3 = new App();
