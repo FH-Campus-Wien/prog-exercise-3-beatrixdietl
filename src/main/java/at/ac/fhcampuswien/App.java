@@ -85,11 +85,8 @@ public class App {
         }
 
         public static void guessingGame(int numberToGuess) {
-            //Random randomNumber = new Random(); //https://www.educative.io/answers/how-to-generate-random-numbers-in-java
             Scanner scan = new Scanner(System.in);
-           // guessingGame(randomNumberBetweenOneAndHundred());
             int countNumber = 1;
-            //int numberToGuess = randomNumber.nextInt(101);
             //numberToGuess = randomNumberBetweenOneAndHundred();
             int guessNumber;
 
@@ -125,6 +122,21 @@ public class App {
         if(numbers1.length != numbers2.length) {
         return false; //davor Vergleich der beiden Arrays auf ungleiche Länge
         }
+
+        int[] helperArray = new int[numbers1.length];
+        
+        for (int i = 0; i < numbers1.length; i++){
+            helperArray[i] = numbers1[i];
+        }
+        
+        for (int j = 0; j < numbers1.length; j++){
+            numbers1[j] = numbers2[j];
+        }
+        
+        for (int k = 0; k < numbers2.length; k++){
+            numbers2[k] = helperArray[k];
+        }
+
         return true;
         }
         // boolean returnValue = swapArrays(new int []{4,3,2}, new int[]{4});
