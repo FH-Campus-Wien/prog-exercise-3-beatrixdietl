@@ -63,23 +63,22 @@ public class App {
 
         }
 
-        public static void lcg(long[]array){
-            array = new long[10];
-            Random randomNumber = new Random(); //https://www.educative.io/answers/how-to-generate-random-numbers-in-java
-            double x = randomNumber.nextLong();
-            double a = 1103515245;
-            double c = 12345;
-            double m = Math.pow(2, 31);
+        public static long[] lcg(long input) {
+            long [] array = new long[10];
+            //Random randomNumber = new Random();
+            //long x = randomNumber.nextLong();
+            long a = 1103515245;
+            int c = 12345;
+            long m = (long) Math.pow(2, 31);
 
+            array[0] = (a * input + c) % m;
 
-            for (int h = 0; h < 10; h++) {
-                x = (a * x + c) % m;
-                array[h] = (long) x;
+            for (int h = 1; h < 10; h++) {
+                array[h] = (a * array[h-1] + c) % m;
             }
-
-
-
+            return array;
         }
+
 
         public static int randomNumberBetweenOneAndHundred(){
             return (int) (Math.random() * 99 + 1);
